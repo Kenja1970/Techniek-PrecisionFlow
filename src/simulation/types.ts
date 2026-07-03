@@ -7,6 +7,39 @@ export interface Liquid {
   viscosity: number;
   dropletUl: number;
   hazard: string;
+  materialName: string;
+  pumpModel: string;
+  preheatRequired: boolean;
+}
+
+export interface PreheatState {
+  tempC: Record<LiquidId, number>;
+  setpointC: Record<LiquidId, number>;
+  powerW: Record<LiquidId, number>;
+  energyWh: Record<LiquidId, number>;
+  active: Record<LiquidId, boolean>;
+  atSetpoint: Record<LiquidId, boolean>;
+}
+
+export interface ConsumptionLedger {
+  targetGrams: Record<LiquidId, number>;
+  dispensedGrams: Record<LiquidId, number>;
+  dripLossMg: Record<LiquidId, number>;
+  purgeLossGrams: Record<LiquidId, number>;
+  totalConsumedGrams: Record<LiquidId, number>;
+  tankRemainingMl: Record<LiquidId, number>;
+}
+
+export interface CpkHistoryPoint {
+  batchIndex: number;
+  batchId: string;
+  liquid: LiquidId;
+  cpk: number;
+  cp: number;
+  mean: number;
+  sigma: number;
+  sampleSize: number;
+  target: number;
 }
 
 export interface Recipe {
@@ -50,10 +83,19 @@ export interface SimulationSnapshot {
   phase: LinePhase;
   scanCount: number;
   scanMs: number;
+  baseScanMs: number;
+  speedFactor: number;
+  elapsedSimSec: number;
+  phaseTicksRemaining: number;
   batchId: string;
+  batchIndex: number;
   recipe: Recipe;
   actual: Record<LiquidId, number>;
   dripLossMg: Record<LiquidId, number>;
+  consumption: ConsumptionLedger;
+  cpkHistory: CpkHistoryPoint[];
+  preheat: PreheatState;
+  productionSystemId: string;
   tags: ControllerTag[];
   alarms: AlarmEvent[];
   interlocks: Interlock[];

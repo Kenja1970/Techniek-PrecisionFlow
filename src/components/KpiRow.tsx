@@ -7,6 +7,8 @@ interface Props {
 export function KpiRow({ snapshot }: Props) {
   const drip =
     snapshot.dripLossMg.A + snapshot.dripLossMg.B + snapshot.dripLossMg.C;
+  const mins = Math.floor(snapshot.elapsedSimSec / 60);
+  const secs = Math.floor(snapshot.elapsedSimSec % 60);
 
   return (
     <div className="pf-kpi-row">
@@ -15,12 +17,18 @@ export function KpiRow({ snapshot }: Props) {
         <strong>{snapshot.phase}</strong>
       </div>
       <div className="pf-kpi">
-        <span>Scan cycle</span>
-        <strong>{snapshot.scanMs} ms</strong>
+        <span>Sim time</span>
+        <strong>
+          {mins}:{secs.toString().padStart(2, "0")}
+        </strong>
       </div>
       <div className="pf-kpi">
         <span>Batch</span>
         <strong>{snapshot.batchId}</strong>
+      </div>
+      <div className="pf-kpi">
+        <span>Speed</span>
+        <strong>{snapshot.speedFactor.toFixed(2)}×</strong>
       </div>
       <div className="pf-kpi">
         <span>Drip loss</span>

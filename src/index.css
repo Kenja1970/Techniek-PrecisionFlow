@@ -95,7 +95,7 @@ body {
 
 .pf-kpi-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
@@ -265,5 +265,490 @@ body {
 
   .pf-kpi-row {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pf-liquid-cpk-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pf-speed-card {
+  margin-bottom: 0.75rem;
+}
+
+.pf-speed-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.78rem;
+  color: var(--pf-muted);
+  margin-bottom: 0.5rem;
+}
+
+.pf-speed-meta strong {
+  color: var(--pf-text);
+}
+
+.pf-speed-slider-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--pf-muted);
+  margin-bottom: 0.35rem;
+}
+
+.pf-speed-slider {
+  width: 100%;
+  accent-color: var(--pf-blue);
+}
+
+.pf-speed-presets {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.pf-speed-presets button {
+  background: var(--pf-panel-2);
+  color: var(--pf-text);
+  border: 1px solid var(--pf-line);
+  border-radius: 6px;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.pf-speed-presets button.active {
+  border-color: var(--pf-blue);
+  color: var(--pf-blue);
+}
+
+.pf-liquid-cpk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.pf-liquid-cpk-panel {
+  background: var(--pf-panel-2);
+  border: 1px solid var(--pf-line);
+  border-radius: 8px;
+  padding: 0.65rem;
+}
+
+.pf-liquid-cpk-panel h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.82rem;
+}
+
+.pf-liquid-meta {
+  margin: 0 0 0.5rem;
+  font-size: 0.68rem;
+  color: var(--pf-muted);
+}
+
+.pf-cpk-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.pf-cpk-kpi {
+  background: #0a1018;
+  border-radius: 6px;
+  padding: 0.35rem;
+  font-size: 0.68rem;
+}
+
+.pf-cpk-kpi span {
+  display: block;
+  color: var(--pf-muted);
+}
+
+.pf-cpk-kpi strong {
+  font-size: 0.95rem;
+}
+
+.pf-cpk-kpi.ok strong {
+  color: var(--pf-green);
+}
+
+.pf-cpk-kpi.warn strong {
+  color: var(--pf-yellow);
+}
+
+.pf-mini-chart h4 {
+  margin: 0.35rem 0 0.15rem;
+  font-size: 0.65rem;
+  color: var(--pf-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pf-chart-empty {
+  font-size: 0.72rem;
+  color: var(--pf-muted);
+  margin: 0.5rem 0;
+}
+
+.pf-system-ref {
+  font-size: 0.72rem;
+  color: var(--pf-muted);
+  margin: 0 0 0.65rem;
+}
+
+.pf-consumption-chart {
+  margin-bottom: 0.65rem;
+}
+
+.pf-consumption-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+}
+
+.pf-consumption-table th,
+.pf-consumption-table td {
+  border-bottom: 1px solid var(--pf-line);
+  padding: 0.4rem 0.35rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.pf-consumption-table td.num {
+  font-family: ui-monospace, monospace;
+  color: var(--pf-cyan);
+}
+
+.pf-consumption-table td.num.warn {
+  color: var(--pf-yellow);
+}
+
+.pf-consumption-table small {
+  color: var(--pf-muted);
+}
+
+.pf-station-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+  margin-bottom: 0.5rem;
+}
+
+.pf-station-table th,
+.pf-station-table td {
+  border-bottom: 1px solid var(--pf-line);
+  padding: 0.35rem 0.3rem;
+  text-align: left;
+}
+
+.pf-station-table td.num {
+  font-family: ui-monospace, monospace;
+}
+
+.pf-subheading {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--pf-muted);
+  margin: 0.5rem 0 0.35rem;
+}
+
+.pf-system-notes {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.68rem;
+  color: var(--pf-muted);
+}
+
+.pf-system-notes li {
+  margin-bottom: 0.25rem;
+}
+
+/* SCADA tag monitor — units right of value */
+.pf-tag-monitor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.pf-tag-group-header {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pf-blue);
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--pf-line);
+}
+
+.pf-tag-name {
+  font-family: ui-monospace, monospace;
+  font-size: 0.7rem;
+  color: var(--pf-muted);
+}
+
+.pf-tag-value-cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.pf-tag-value {
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--pf-cyan);
+  min-width: 4rem;
+  display: inline-block;
+  text-align: right;
+}
+
+.pf-tag-unit {
+  display: inline-block;
+  min-width: 2.5rem;
+  margin-left: 0.35rem;
+  font-size: 0.68rem;
+  color: var(--pf-muted);
+  text-align: left;
+}
+
+.pf-inline-unit {
+  font-size: 0.85em;
+  color: var(--pf-muted);
+  font-weight: normal;
+}
+
+/* Facility layout diagram */
+.pf-facility-wrap {
+  overflow-x: auto;
+  background: #0a1018;
+  border-radius: 8px;
+  padding: 0.35rem;
+}
+
+.pf-facility-svg {
+  width: 100%;
+  min-width: 720px;
+  height: auto;
+  display: block;
+}
+
+.pf-room {
+  stroke-width: 2;
+  rx: 4;
+}
+
+.pf-room-corrosive {
+  fill: #1a2838;
+  stroke: #4da3ff;
+}
+
+.pf-room-flammable {
+  fill: #2a1f18;
+  stroke: #ff5c5c;
+}
+
+.pf-room-toxic {
+  fill: #1a2a28;
+  stroke: #5eead4;
+}
+
+.pf-room-mix {
+  fill: #151b22;
+  stroke: #8b9cb0;
+}
+
+.pf-room-title {
+  fill: #e6edf3;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pf-room-sub {
+  fill: #8b9cb0;
+  font-size: 9px;
+}
+
+.pf-tank {
+  fill: #1a2838;
+  stroke: #4da3ff;
+  stroke-width: 1.5;
+}
+
+.pf-hx {
+  fill: #2a3544;
+  stroke: #ffc857;
+  stroke-width: 1.5;
+}
+
+.pf-hx.heating {
+  fill: #3d2a10;
+}
+
+.pf-pump {
+  fill: #3ddc84;
+  stroke: #2a9d5c;
+  stroke-width: 1;
+}
+
+.pf-pump.active {
+  filter: drop-shadow(0 0 5px rgba(93, 234, 212, 0.9));
+}
+
+.pf-pump-label {
+  fill: #0c0f12;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.pf-equip-label {
+  fill: #8b9cb0;
+  font-size: 9px;
+}
+
+.pf-pipe-label {
+  fill: #8b9cb0;
+  font-size: 8px;
+}
+
+.pf-pipe-note {
+  fill: #ffc857;
+  font-size: 9px;
+}
+
+.pf-corridor {
+  fill: #0e141c;
+  stroke: #2a3544;
+  stroke-dasharray: 4 4;
+}
+
+.pf-corridor-label {
+  fill: #6b7c90;
+  font-size: 10px;
+}
+
+.pf-mixer {
+  fill: #1c2430;
+  stroke: #8b9cb0;
+  stroke-width: 2;
+}
+
+.pf-conveyor {
+  stroke: #6b7c90;
+}
+
+.pf-partition {
+  stroke: #ff5c5c;
+  stroke-width: 2;
+  stroke-dasharray: 8 4;
+  opacity: 0.6;
+}
+
+.pf-sensor {
+  fill: #ffc857;
+}
+
+.pf-legend-box {
+  fill: #10161d;
+  stroke: #2a3544;
+}
+
+.pf-legend-item {
+  fill: #8b9cb0;
+  font-size: 9px;
+}
+
+.pf-legend-note {
+  fill: #6b7c90;
+  font-size: 8px;
+}
+
+/* Preheat panel */
+.pf-preheat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+.pf-preheat-card {
+  background: var(--pf-panel-2);
+  border: 1px solid var(--pf-line);
+  border-radius: 8px;
+  padding: 0.65rem;
+}
+
+.pf-preheat-card.heating {
+  border-color: #ffc857;
+}
+
+.pf-preheat-card.ready {
+  border-color: var(--pf-green);
+}
+
+.pf-preheat-card h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.78rem;
+}
+
+.pf-preheat-type,
+.pf-preheat-visc {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  color: var(--pf-muted);
+}
+
+.pf-preheat-gauges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.pf-preheat-label {
+  display: block;
+  font-size: 0.62rem;
+  color: var(--pf-muted);
+  text-transform: uppercase;
+}
+
+.pf-preheat-reading {
+  font-family: ui-monospace, monospace;
+  font-size: 0.9rem;
+}
+
+.pf-preheat-reading.pf-energy {
+  color: #ffc857;
+}
+
+.pf-preheat-bar-wrap {
+  height: 6px;
+  background: #0a1018;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+
+.pf-preheat-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.15s;
+}
+
+.pf-preheat-status {
+  margin: 0;
+  font-size: 0.65rem;
+  color: var(--pf-muted);
+}
+
+.pf-preheat-total {
+  margin-top: 0.65rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--pf-line);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 1100px) {
+  .pf-preheat-grid {
+    grid-template-columns: 1fr;
   }
 }

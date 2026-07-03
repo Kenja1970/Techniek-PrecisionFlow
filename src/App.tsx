@@ -6,19 +6,26 @@ import {
   InterlockList,
   TagMonitor,
 } from "./components/DashboardPanels";
+import { ConsumptionPanel } from "./components/ConsumptionPanel";
+import { FacilityLayoutDiagram } from "./components/FacilityLayoutDiagram";
 import { KpiRow } from "./components/KpiRow";
-import { ProcessLineMimic } from "./components/ProcessLineMimic";
+import { LiquidCpkCharts } from "./components/LiquidCpkCharts";
+import { PreheatPanel } from "./components/PreheatPanel";
+import { ProductionSystemPanel } from "./components/ProductionSystemPanel";
 import { SafetyBanner } from "./components/SafetyBanner";
+import { SpeedControl } from "./components/SpeedControl";
 import { SpcChart } from "./components/SpcChart";
 import type { Recipe } from "./simulation/types";
 
 export function App() {
   const snapshot = useSimulationStore((s) => s.snapshot);
   const setRecipe = useSimulationStore((s) => s.setRecipe);
+  const setSpeed = useSimulationStore((s) => s.setSpeed);
   const start = useSimulationStore((s) => s.start);
   const stop = useSimulationStore((s) => s.stop);
   const reset = useSimulationStore((s) => s.reset);
   const exportBatch = useSimulationStore((s) => s.exportBatch);
+  const preheatLine = useSimulationStore((s) => s.preheatLine);
 
   return (
     <div className="pf-app">
@@ -34,9 +41,10 @@ export function App() {
       <div className="pf-grid">
         <section>
           <KpiRow snapshot={snapshot} />
-          <article className="pf-card">
-            <h2>Process line — P&amp;ID-style overview</h2>
-            <ProcessLineMimic snapshot={snapshot} />
+          <SpeedControl snapshot={snapshot} onSpeedChange={setSpeed} />
+          <article className="pf-card pf-card-spaced">
+            <h2>Facility layout — partitionable rooms &amp; piping</h2>
+            <FacilityLayoutDiagram snapshot={snapshot} />
             <div className="pf-toolbar">
               <select
                 aria-label="Recipe"
@@ -49,6 +57,9 @@ export function App() {
                   </option>
                 ))}
               </select>
+              <button type="button" onClick={preheatLine}>
+                Preheat line
+              </button>
               <button type="button" className="primary" onClick={start}>
                 Start batch
               </button>
@@ -63,13 +74,23 @@ export function App() {
               </button>
             </div>
           </article>
+          <div className="pf-card-spaced">
+            <PreheatPanel snapshot={snapshot} />
+          </div>
+          <div className="pf-card-spaced">
+            <ConsumptionPanel snapshot={snapshot} />
+          </div>
+          <div className="pf-card-spaced">
+            <LiquidCpkCharts snapshot={snapshot} />
+          </div>
           <article className="pf-card pf-card-spaced">
-            <h2>SPC — dose capability (Cpk target 1.67)</h2>
+            <h2>Combined SPC — all liquids</h2>
             <SpcChart snapshot={snapshot} />
           </article>
         </section>
 
         <aside className="pf-right">
+          <ProductionSystemPanel />
           <article className="pf-card">
             <h2>PLC-style controller</h2>
             <ControllerPanel snapshot={snapshot} />
